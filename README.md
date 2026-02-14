@@ -59,11 +59,13 @@ for i in range(n):
 
 ```
 
-## Output:
-![Output1](CODE_page-0001.jpg)
-![Output2](CODE_page-0002.jpg)
+## Output:)
+
+<img width="1887" height="903" alt="Screenshot 2026-02-14 081329" src="https://github.com/user-attachments/assets/792b71e4-1064-4b47-9ba3-33afae3c7367" />
+
 
 ## Result:
+
 Thus the program to find the solution of a matrix using Gaussian Elimination is written and verified using python programming.
 
 ****
