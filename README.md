@@ -1,71 +1,41 @@
-# Gaussian Elimination
-
-## AIM:
-To write a program to find the solution of a matrix using Gaussian Elimination.
-
-## Equipments Required:
-1. Hardware – PCs
-2. Anaconda – Python 3.7 Installation / Moodle-Code Runner
-
-## Algorithm
-
-1.Input matrix dimensions and initialize augmented matrix and solution vector.
-
-2.Populate the augmented matrix with user inputs.
-
-3.Perform Gaussian elimination to reduce the matrix to upper 
-triangular form, ensuring no division by zero.
-
-4.Back substitute to compute solution values for the variables.
-
-5.Print the solution vector formatted to two decimal places.
-
-## Program:
+# Implementation of Univariate Linear Regression
+## Aim:
+To implement univariate Linear Regression to fit a straight line using least squares.
+## Equipment’s required:
+1.	Hardware – PCs
+2.	Anaconda – Python 3.7 Installation / Moodle-Code Runner
+## Algorithm:
+1.	Get the independent variable X and dependent variable Y.
+2.	Calculate the mean of the X -values and the mean of the Y -values.
+3.	Find the slope m of the line of best fit using the formula.
+ ![eqn1](./eq1.jpg)
+4.	Compute the y -intercept of the line by using the formula:
+![eqn2](./eq2.jpg)  
+5.	Use the slope m and the y -intercept to form the equation of the line.
+6.	Obtain the straight line equation Y=mX+b and plot the scatterplot.
+## Program
 ```
-'''
-Program to solve a matrix using Gaussian elimination without partial pivoting.
-Developed by: KABBILESH S
-RegisterNumber: 212225240063
-'''
-```
-```
+import pandas as pd
 import numpy as np
-import sys
-n=int(input())
-a=np.zeros((n,n+1))
-x=np.zeros(n)
-for i in range(n):
-    for j in range(n+1):
-        a[i][j]=float(input())
-for i in range(n):
-    if a[i][i]==0.0:
-        sys.exit("Divide by zero detected!")
-        
-    for j in range(i+1,n):
-        ratio=a[j][i]/a[i][i]
-        for k in range(n+1):
-            a[j][k]=a[j][k]-ratio*a[i][k]
-
-x[n-1]=a[n-1][n]/a[n-1][n-1]
-
-for i in range(n-2,-1,-1):
-    x[i]=a[i][n]
-    for j in range(i+1,n):
-        x[i]=x[i]-a[i][j]*x[j]
-    x[i]=x[i]/a[i][i]
-        
-for i in range(n):
-    print('X%d = %0.2f' %(i,x[i]),end=' ')
+from matplotlib import pyplot
+x=np.array(eval(input()))
+y=np.array(eval(input()))
+Xmean=np.mean(x)
+Ymean=np.mean(y)
+num,den=0,0
+for i in range(len(x)):
+    num+=(x[i]-Xmean)*(y[i]-Ymean)
+    den+=(x[i]-Xmean)**2
+slope=num/den
+c=Ymean-slope*Xmean
+y_pred=slope*x+c
+pyplot.scatter(x,y,color='red')
+pyplot.plot(x,y_pred,color='blue')
+pyplot.show()
 
 ```
+## Output
+![output](10.png)
 
-## Output:)
-
-<img width="1887" height="903" alt="Screenshot 2026-02-14 081329" src="https://github.com/user-attachments/assets/792b71e4-1064-4b47-9ba3-33afae3c7367" />
-
-
-## Result:
-
-Thus the program to find the solution of a matrix using Gaussian Elimination is written and verified using python programming.
-
-****
+## Result
+Thus the univariate Linear Regression was implemented to fit a straight line using least squares.
